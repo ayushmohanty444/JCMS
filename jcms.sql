@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 06, 2024 at 08:01 PM
+-- Generation Time: Apr 16, 2024 at 07:08 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -47,7 +47,7 @@ INSERT INTO `advocate_info` (`a_slno`, `a_regd`, `a_name`, `a_email`, `a_phn`, `
 (3, 'OR202003', 'Mukesh Singh', 'Mukesh@gmail.com', 7243792934, '21232f297a57a5a743894a0e4a801fc3', 'profile/OR202003.png', 1),
 (4, 'OR202005', 'Ram Parida', 'ram@gmail.com', 747499724, '21232f297a57a5a743894a0e4a801fc3', 'profile/OR202005.png', 1),
 (15, 'OR202004', 'Hari Das', 'Hari@gmail.com', 48574899428, '21232f297a57a5a743894a0e4a801fc3', 'profile/OR202004.jpg', 1),
-(17, 'OR202011', 'Ashok kumar Patra', 'ashok@gmail.com', 5241369874, 'e10adc3949ba59abbe56e057f20f883e', 'profile/OR202011.jpeg', 1),
+(17, 'OR202011', 'Ashok kumar Patra', 'ashok@gmail.com', 5241369874, '21232f297a57a5a743894a0e4a801fc3', 'profile/OR202011.jpeg', 1),
 (18, 'OR935398', 'Debendra Mishra', 'admin@gmail.com', 9987635543, '21232f297a57a5a743894a0e4a801fc3', 'profile/OR935398.jpeg', 1);
 
 -- --------------------------------------------------------
@@ -87,11 +87,14 @@ CREATE TABLE `casefiling` (
   `rpin` int(6) NOT NULL,
   `advno` varchar(30) NOT NULL,
   `advname` varchar(50) NOT NULL,
+  `r_advname` varchar(50) DEFAULT NULL,
+  `r_advno` varchar(10) DEFAULT NULL,
   `fact` text NOT NULL,
   `act` varchar(100) NOT NULL,
   `section` varchar(100) NOT NULL,
   `file` varchar(100) NOT NULL,
   `sts` varchar(11) NOT NULL,
+  `judgement` text DEFAULT NULL,
   `verify` int(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -99,10 +102,11 @@ CREATE TABLE `casefiling` (
 -- Dumping data for table `casefiling`
 --
 
-INSERT INTO `casefiling` (`slno`, `filingno`, `state`, `court`, `casetype`, `date`, `pname`, `pgname`, `page`, `pgender`, `pnation`, `pcaste`, `pemail`, `pphn`, `padd`, `pcity`, `pstate`, `ppin`, `rname`, `rgname`, `rage`, `rgender`, `rnation`, `rcaste`, `radd`, `rcity`, `rstate`, `rpin`, `advno`, `advname`, `fact`, `act`, `section`, `file`, `sts`, `verify`) VALUES
-(2, 464787, 'ORISSA', 'ORISSA HIGH COURT', 'WP(C)', '2024-02-27', 'Bhaskar Ray', 'Prabhakar Ray', 79, 'Male', 'Indian', 'General', 'xzy@h.df', 87472287, 'Patia', 'Khurdha', 'ORISSA', 282839, 'Manoj Parida ', 'Bigyan Parida', 56, 'Male', 'Indian', 'OBC', 'Buxi bazar', 'Cuttack', 'ORISSA', 73783, 'OR935398', 'Debendra Mishra', 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Distinctio porro vitae rem dolorem, repellendus, vel hic quas assumenda odit nulla optio adipisci dicta necessitatibus obcaecati exercitationem et. Doloribus qui mollitia sapiente quasi quidem, reprehenderit ullam tempore accusantium provident, nulla odit placeat maxime, dolore delectus esse veritatis. Deleniti totam fugiat veritatis quia autem reprehenderit, harum dignissimos aliquid nobis possimus cupiditate quibusdam quidem eligendi sit laudantium, consectetur perferendis magni minima sint? Et, dolore. Veritatis blanditiis id odio facilis, vero aliquam inventore ipsa nulla unde. Fuga, aliquam deleniti provident explicabo culpa, consequuntur natus rerum, id tempora quia iste! Facere error recusandae fugit provident deleniti quae fuga eum laudantium aut asperiores quaerat id maxime rerum, officia in quasi, autem ullam commodi veritatis odio, maiores impedit exercitationem quia. Debitis, beatae porro magni mollitia quae ab sit exercitationem libero fuga! Quaerat omnis voluptates eos perferendis, aut numquam dolor magnam natus quidem, similique, ab ad quos earum?', 'PMLA Act', '468', 'XtraMarkSheetCGPANew.pdf', 'pending', 0),
-(3, 957418, 'ORISSA', 'ORISSA HIGH COURT', 'WP(C)', '2024-02-27', 'Bhaskar Ray', 'Prabhakar Ray', 79, 'Male', 'Indian', 'General', 'xzy@h.df', 87472287, 'Patia', 'Khurdha', 'ORISSA', 282839, 'Manoj Parida ', 'Bigyan Parida', 56, 'Male', 'Indian', 'OBC', 'Buxi bazar', 'Cuttack', 'ORISSA', 73783, 'OR935398', 'Debendra Mishra', 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Distinctio porro vitae rem dolorem, repellendus, vel hic quas assumenda odit nulla optio adipisci dicta necessitatibus obcaecati exercitationem et. Doloribus qui mollitia sapiente quasi quidem, reprehenderit ullam tempore accusantium provident, nulla odit placeat maxime, dolore delectus esse veritatis. Deleniti totam fugiat veritatis quia autem reprehenderit, harum dignissimos aliquid nobis possimus cupiditate quibusdam quidem eligendi sit laudantium, consectetur perferendis magni minima sint? Et, dolore. Veritatis blanditiis id odio facilis, vero aliquam inventore ipsa nulla unde. Fuga, aliquam deleniti provident explicabo culpa, consequuntur natus rerum, id tempora quia iste! Facere error recusandae fugit provident deleniti quae fuga eum laudantium aut asperiores quaerat id maxime rerum, officia in quasi, autem ullam commodi veritatis odio, maiores impedit exercitationem quia. Debitis, beatae porro magni mollitia quae ab sit exercitationem libero fuga! Quaerat omnis voluptates eos perferendis, aut numquam dolor magnam natus quidem, similique, ab ad quos earum?', 'PMLA Act', '468', 'XtraMarkSheetCGPANew.pdf', 'pending', 1),
-(12, 665534, 'ORISSA', 'ORISSA HIGH COURT', 'CMP', '2023-03-29', 'Chetan Swain', 'Bhramar Swain', 48, 'Male', 'Indian', 'General', 'chetan@gmail.com', 7836837933, 'Nimapada', 'Puri', 'ORISSA', 783673, 'Ashok Kumar Das', 'Krushna Chandara Das', 35, 'Male', 'Indian', 'General', 'KUJANGA', 'Jagatsinghpur ', 'ORISSA', 754141, 'OR022000', 'Biswajit Sahoo', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde, consequuntur aperiam! Enim inventore suscipit consequatur natus totam doloremque nostrum, eveniet facilis earum, vel nisi odio quam ullam itaque repudiandae! Ut nam, obcaecati optio porro maxime eos harum minima explicabo esse accusantium omnis similique aperiam aspernatur qui sunt magni. Quas officiis a libero suscipit itaque illo fugiat rem similique odio deleniti tempora quaerat impedit numquam tenetur, voluptatem aliquid ipsa. Fugit, recusandae.', 'Enforce Fundamentals Rights Act', '387', 'doc/665534.pdf', 'pending', 1);
+INSERT INTO `casefiling` (`slno`, `filingno`, `state`, `court`, `casetype`, `date`, `pname`, `pgname`, `page`, `pgender`, `pnation`, `pcaste`, `pemail`, `pphn`, `padd`, `pcity`, `pstate`, `ppin`, `rname`, `rgname`, `rage`, `rgender`, `rnation`, `rcaste`, `radd`, `rcity`, `rstate`, `rpin`, `advno`, `advname`, `r_advname`, `r_advno`, `fact`, `act`, `section`, `file`, `sts`, `judgement`, `verify`) VALUES
+(2, 464787, 'ORISSA', 'ORISSA HIGH COURT', 'WP(C)', '2024-02-27', 'Bhaskar Ray', 'Prabhakar Ray', 79, 'Male', 'Indian', 'General', 'xzy@h.df', 87472287, 'Patia', 'Khurdha', 'ORISSA', 282839, 'Manoj Parida ', 'Bigyan Parida', 56, 'Male', 'Indian', 'OBC', 'Buxi bazar', 'Cuttack', 'ORISSA', 73783, 'OR935398', 'Debendra Mishra', NULL, NULL, 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Distinctio porro vitae rem dolorem, repellendus, vel hic quas assumenda odit nulla optio adipisci dicta necessitatibus obcaecati exercitationem et. Doloribus qui mollitia sapiente quasi quidem, reprehenderit ullam tempore accusantium provident, nulla odit placeat maxime, dolore delectus esse veritatis. Deleniti totam fugiat veritatis quia autem reprehenderit, harum dignissimos aliquid nobis possimus cupiditate quibusdam quidem eligendi sit laudantium, consectetur perferendis magni minima sint? Et, dolore. Veritatis blanditiis id odio facilis, vero aliquam inventore ipsa nulla unde. Fuga, aliquam deleniti provident explicabo culpa, consequuntur natus rerum, id tempora quia iste! Facere error recusandae fugit provident deleniti quae fuga eum laudantium aut asperiores quaerat id maxime rerum, officia in quasi, autem ullam commodi veritatis odio, maiores impedit exercitationem quia. Debitis, beatae porro magni mollitia quae ab sit exercitationem libero fuga! Quaerat omnis voluptates eos perferendis, aut numquam dolor magnam natus quidem, similique, ab ad quos earum?', 'PMLA Act', '468', 'XtraMarkSheetCGPANew.pdf', 'pending', NULL, 1),
+(3, 957418, 'ORISSA', 'ORISSA HIGH COURT', 'WP(C)', '2024-02-27', 'Bhaskar Ray', 'Prabhakar Ray', 79, 'Male', 'Indian', 'General', 'xzy@h.df', 87472287, 'Patia', 'Khurdha', 'ORISSA', 282839, 'Manoj Parida ', 'Bigyan Parida', 56, 'Male', 'Indian', 'OBC', 'Buxi bazar', 'Cuttack', 'ORISSA', 73783, 'OR935398', 'Debendra Mishra', NULL, NULL, 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Distinctio porro vitae rem dolorem, repellendus, vel hic quas assumenda odit nulla optio adipisci dicta necessitatibus obcaecati exercitationem et. Doloribus qui mollitia sapiente quasi quidem, reprehenderit ullam tempore accusantium provident, nulla odit placeat maxime, dolore delectus esse veritatis. Deleniti totam fugiat veritatis quia autem reprehenderit, harum dignissimos aliquid nobis possimus cupiditate quibusdam quidem eligendi sit laudantium, consectetur perferendis magni minima sint? Et, dolore. Veritatis blanditiis id odio facilis, vero aliquam inventore ipsa nulla unde. Fuga, aliquam deleniti provident explicabo culpa, consequuntur natus rerum, id tempora quia iste! Facere error recusandae fugit provident deleniti quae fuga eum laudantium aut asperiores quaerat id maxime rerum, officia in quasi, autem ullam commodi veritatis odio, maiores impedit exercitationem quia. Debitis, beatae porro magni mollitia quae ab sit exercitationem libero fuga! Quaerat omnis voluptates eos perferendis, aut numquam dolor magnam natus quidem, similique, ab ad quos earum?', 'PMLA Act', '468', 'XtraMarkSheetCGPANew.pdf', 'pending', NULL, 1),
+(12, 665534, 'ORISSA', 'ORISSA HIGH COURT', 'CMP', '2023-03-29', 'Chetan Swain', 'Bhramar Swain', 48, 'Male', 'Indian', 'General', 'chetan@gmail.com', 7836837933, 'Nimapada', 'Puri', 'ORISSA', 783673, 'Ashok Kumar Das', 'Krushna Chandara Das', 35, 'Male', 'Indian', 'General', 'KUJANGA', 'Jagatsinghpur ', 'ORISSA', 754141, 'OR022000', 'Biswajit Sahoo', 'Debendra Mishra', 'OR935398', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Unde, consequuntur aperiam! Enim inventore suscipit consequatur natus totam doloremque nostrum, eveniet facilis earum, vel nisi odio quam ullam itaque repudiandae! Ut nam, obcaecati optio porro maxime eos harum minima explicabo esse accusantium omnis similique aperiam aspernatur qui sunt magni. Quas officiis a libero suscipit itaque illo fugiat rem similique odio deleniti tempora quaerat impedit numquam tenetur, voluptatem aliquid ipsa. Fugit, recusandae.', 'Enforce Fundamentals Rights Act', '387', 'doc/665534.pdf', 'Disposed', 'jfjfjffjf', 1),
+(13, 667527, 'ORISSA', 'ORISSA HIGH COURT', 'WP(C)', '2024-04-14', 'Jayram Lenka', 'Sidheswar Lenka', 49, 'Male', 'Indian', 'OBC', 'jayram@gmail.com', 7834793994, 'Talapada (santara)', 'Kujanga', 'ORISSA', 754141, 'Kalandi Panigrahi', 'Hrushikesh Panigrahi', 57, 'Male', 'Indian', 'General', 'cuttack', 'Cuttack', 'ORISSA', 753009, 'OR935398', 'Debendra Mishra', NULL, NULL, 'Fact of the cases are The peer-reviewed study, published in leading scientific journal Marine Pollution Bulletin by Elsevier, has analysed shoreline changes from 1990 to 2022 using satellite imagery and the digital shoreline analysis system software.It covered 929 transects across four zones in the nesting habitat. Dr Basudev Tripathy, scientist, ZSI-Pune, described the findings as a matter of concern for the future of Olive Ridley Arribada (mass nesting that recently started at Gahirmatha).', 'Criminal Procedure Act', '298', 'doc/667527.pdf', 'pending', NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -113,9 +117,23 @@ INSERT INTO `casefiling` (`slno`, `filingno`, `state`, `court`, `casetype`, `dat
 CREATE TABLE `case_history` (
   `slno` int(100) NOT NULL,
   `case_no` varchar(20) NOT NULL,
+  `year` int(4) NOT NULL,
   `next_date` date NOT NULL,
   `remark` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `case_history`
+--
+
+INSERT INTO `case_history` (`slno`, `case_no`, `year`, `next_date`, `remark`) VALUES
+(2, '290', 2024, '2024-04-16', 'Admission'),
+(3, '222', 2024, '2024-04-23', 'Admission'),
+(4, '222', 2024, '2024-05-02', 'Notice Sent to Respondent.'),
+(5, '346', 2024, '2024-04-15', 'For Petitioner Hearing'),
+(6, '222', 2024, '2024-04-15', 'Hearing of Petitioner'),
+(7, '323', 2023, '2024-04-17', 'Petitioner evidence '),
+(8, '222', 2024, '2024-04-17', 'Hearing of Respondent');
 
 -- --------------------------------------------------------
 
@@ -133,16 +151,18 @@ CREATE TABLE `case_info` (
   `regd_date` date NOT NULL,
   `j_regd` varchar(11) NOT NULL,
   `a_regd` varchar(11) NOT NULL,
-  `admit` tinyint(1) NOT NULL
+  `courtno` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `case_info`
 --
 
-INSERT INTO `case_info` (`slno`, `f_filingno`, `f-date`, `case_type`, `case_no`, `year`, `regd_date`, `j_regd`, `a_regd`, `admit`) VALUES
-(1, '665534', '2023-03-29', 'WP(C)', '323', 2023, '2023-03-30', 'OR022008', 'OR022000', 1),
-(3, '957418', '2024-02-27', 'WP(C)', '346', 2024, '2024-02-28', 'OR022008', 'OR935398', 1);
+INSERT INTO `case_info` (`slno`, `f_filingno`, `f-date`, `case_type`, `case_no`, `year`, `regd_date`, `j_regd`, `a_regd`, `courtno`) VALUES
+(1, '665534', '2023-03-29', 'WP(C)', '323', 2023, '2023-03-30', 'OR022008', 'OR022000', 17),
+(3, '957418', '2024-02-27', 'WP(C)', '346', 2024, '2024-02-28', 'OR022008', 'OR935398', 0),
+(7, '464787', '2024-02-27', 'WP(C)', '290', 2024, '2024-04-10', 'OR022008', 'OR935398', 12),
+(8, '667527', '2024-04-14', 'WP(C)', '222', 2024, '2024-04-16', 'OR022008', 'OR935398', 10);
 
 -- --------------------------------------------------------
 
@@ -209,7 +229,7 @@ CREATE TABLE `judge_info` (
 --
 
 INSERT INTO `judge_info` (`j_slno`, `j_regd`, `j_name`, `j_email`, `j_phn`, `j_pass`, `j_path`, `status`) VALUES
-(1, 'OR022008', 'Abhijit Sahoo', 'bsahoo8342@gmail.com', 9692995380, '73acd9a5972130b75066c82595a1fae3', 'profile/OR022008.png', 1),
+(1, 'OR022008', 'Abhijit Sahoo', 'bsahoo8342@gmail.com', 9692995380, '21232f297a57a5a743894a0e4a801fc3', 'profile/OR022008.png', 1),
 (2, 'OR202003', 'Ram Prasad', 'ram@gmail.com', 4897969739, '21232f297a57a5a743894a0e4a801fc3', 'profile/OR202003.png', 1),
 (3, 'OR202010', 'Debadatta Swain', 'swain@g.o', 474747665, '21232f297a57a5a743894a0e4a801fc3', 'profile/OR202010.jpeg', 1);
 
@@ -367,19 +387,19 @@ ALTER TABLE `advocate_info`
 -- AUTO_INCREMENT for table `casefiling`
 --
 ALTER TABLE `casefiling`
-  MODIFY `slno` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `slno` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `case_history`
 --
 ALTER TABLE `case_history`
-  MODIFY `slno` int(100) NOT NULL AUTO_INCREMENT;
+  MODIFY `slno` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `case_info`
 --
 ALTER TABLE `case_info`
-  MODIFY `slno` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `slno` int(100) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `court_list`

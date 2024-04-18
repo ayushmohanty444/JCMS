@@ -4,10 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">
     </script>
     <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
@@ -22,13 +20,13 @@
 
 </head>
 <style>
-.boxtbl {
-    padding: 2%;
-    margin: 2% auto;
-    width: 90%;
-    background: rgb(206, 202, 196) !important;
-    border-radius: 5px;
-}
+    .boxtbl {
+        padding: 2%;
+        margin: 2% auto;
+        width: 90%;
+        background: rgb(206, 202, 196) !important;
+        border-radius: 5px;
+    }
 </style>
 
 <body>
@@ -58,7 +56,7 @@
                         <li><a class="nav-link scrollto" href="https://www.sci.gov.in/">Supreme Court</a></li>
                         <li><a class="nav-link scrollto" href="../highcourt.php">Highcourt</a></li>
                         <li><a class="nav-link scrollto" href="https://www.indiacode.nic.in/">India Code</a></li>
-                        <li><a class="nav-link scrollto" href="#">Contact Us</a></li>
+                        <li><a class="nav-link scrollto" href="../contact.php">Contact Us</a></li>
                     </ul>
                     <i class="bi bi-list mobile-nav-toggle"></i>
                 </nav>

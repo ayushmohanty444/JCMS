@@ -26,6 +26,12 @@
                    Information</a>
            </li>
            <li class="nav-item">
+               <a class="nav-link <?php echo basename($_SERVER['PHP_SELF']) == 'status.php' ? 'active' : ''; ?>"
+                   aria-current="page" href="status.php"><i class="bi bi-file-earmark-text"></i>
+                   Case
+                   Status</a>
+           </li>
+           <li class="nav-item">
                <a class="nav-link <?php echo basename($_SERVER['PHP_SELF']) == 'profile.php' ? 'active' : ''; ?>"
                    aria-current="page" href="profile.php"><i class="bi bi-person-lines-fill"></i> Profile</a>
            </li>

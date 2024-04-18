@@ -38,9 +38,6 @@ if (mysqli_num_rows($result) > 0) {
     <?php include 'a_nav.php';
     ?>
 
-    <div class="container boxtbl">
-        <span>Information</span>
-    </div>
     <form action="filing.php" method="post" enctype="multipart/form-data">
         <div class="container boxtbl">
             <h4 class="mb-3 text-center"><u>Case Registration Form</u></h4>
@@ -371,15 +368,6 @@ if (mysqli_num_rows($result) > 0) {
         <!-- Matter Information -->
     </form>
     <script>
-    // window.onload = function() {
-    //     document.getElementById('file').addEventListener('change', getFileName);
-    // }
-    // const getFileName = (event) => {
-    //     const files = event.target.files;
-    //     const fileName = files[0].name;
-    //     console.log("file name: ", fileName);
-    //     document.getElementById('filename').innerHTML = "File Name : " + fileName;
-    // }
     var advno = document.getElementById('advno');
     var advnm = document.getElementById('advaname');
     advno.onfocus = function() {

@@ -51,38 +51,53 @@ if (mysqli_num_rows($result) > 0) {
                     <th>Case No</th>
                     <th>Parties Name</th>
                     <th>Date</th>
-                    <th>Time slot</th>
+                    <th>Reamark</th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>02/2023</td>
-                    <td>XYZ Vs. ABC</td>
-                    <td>2011/04/25</td>
-                    <td>10:30 AM</td>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td>02/2023</td>
-                    <td>XYZ Vs. ABC</td>
-                    <td>2011/04/25</td>
-                    <td>10:30 AM</td>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td>02/2023</td>
-                    <td>XYZ Vs. ABC</td>
-                    <td>2011/04/25</td>
-                    <td>10:30 AM</td>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td>02/2023</td>
-                    <td>XYZ Vs. ABC</td>
-                    <td>2011/04/25</td>
-                    <td>10:30 AM</td>
-                </tr>
+                <?php
+
+                $sql = "SELECT * FROM `case_info` WHERE `j_regd` = '$Regd'";
+                $runsql = mysqli_query($con, $sql);
+                while ($row = mysqli_fetch_array($runsql)) {
+                    $casetype = $row['case_type'];
+                    $caseno = $row['case_no'];
+                    $year = $row['year'];
+                    $filingo = $row['f_filingno'];
+                    $case = $caseno . '/' . $year;
+
+                    $sql1 = "SELECT * FROM `casefiling` WHERE `filingno`='$filingo' ";
+                    $runsql1 = mysqli_query($con, $sql1);
+                    while ($row1 = mysqli_fetch_array($runsql1)) {
+                        $party1 = $row1['pname'];
+                        $party2 = $row1['rname'];
+                        $party = $party1 . ' Vs. ' . $party2;
+                    }
+
+
+                    $d = strtotime("tomorrow");
+                    $t = date("Y-m-d", $d);
+                    // echo $t;
+
+
+                    $sql2 = "SELECT * FROM `case_history` WHERE  `case_no`='$caseno' AND `year`='$year' AND `next_date`='$t' ";
+                    $runsql2 = mysqli_query($con, $sql2);
+                    $sl = 1;
+                    while ($row2 = mysqli_fetch_array($runsql2)) {
+                        echo '
+        <tr>
+        <td>' . $sl . '</td>
+        <td>' . $case . '</td>
+        <td>' . $party . '</td>
+        <td>' . $row2['next_date'] . '</td>
+        <td>' . $row2['remark'] . '</td>
+    </tr>
+        ';
+                        $sl = $sl + 1;
+                    }
+                }
+
+                ?>
 
             </tbody>
         </table>

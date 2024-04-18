@@ -18,16 +18,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 echo "<div class='alert alert-danger alert-dismissible fade show' role='alert'>
                 <strong>Password Incorrect!</strong> Please enter correct password.
                 <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
-              </div>";
+                </div>";
             }
         }
     } else {
         echo "<div class='alert alert-danger alert-dismissible fade show' role='alert'>
         <strong>Username Not found!</strong> Please Check your username.
         <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
-      </div>";;
+        </div>";;
     }
 }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -38,25 +39,27 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <title>Advocate Login | JCMS</title>
 </head>
 <style>
-    .boxtbl {
-        width: 50% !important;
-        height: 400px;
-    }
+.boxtbl {
+    width: 50% !important;
+    height: 400px;
+}
 </style>
 
 <body>
-    <?php include 'head.php'; ?>
+    <?php include 'head.php';?>
     <!--  Page Content -->
     <div class="container boxtbl">
         <h3 class="text-center mt-4">Advocate Login</h3>
-        <form action="#" method="post">
+        <form method="post">
             <div class="container col-md-8">
                 <div class="form-floating mb-3">
-                    <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" name="user">
+                    <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com"
+                        name="user">
                     <label for="floatingInput">Email address</label>
                 </div>
                 <div class="form-floating">
-                    <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="pass">
+                    <input type="password" class="form-control" id="floatingPassword" placeholder="Password"
+                        name="pass">
                     <label for="floatingPassword">Password</label>
                 </div>
                 <div class="text-center mt-3">

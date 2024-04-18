@@ -4,6 +4,7 @@ if (!isset($_SESSION["login"]) && $_SESSION["login"] != true) {
     header("location: a_login.php");
     exit();
 }
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -69,8 +70,8 @@ if (!isset($_SESSION["login"]) && $_SESSION["login"] != true) {
                             $sl++;
                             echo '
                             <td>' . $row['pname'] . '  Vs  ' . $row['rname'] . '</td>
-                            <td><span class="badge text-bg-info" id="status">' . $row['sts'] . '</span></td>
-                            <td><a href="caseinfo.php?fno=' . $row['filingno'] . '" class="btn btn-warning" id="link" ">View</a></td>
+                            <td><span class="badge text-bg-info" >' . $row['sts'] . '</span></td>
+                            <td><a href="caseinfo.php?fno=' . $row['filingno'] . '" class="btn btn-warning" id="link">View</a></td>
                             </tr>';
                         }
                     } else {
@@ -82,14 +83,7 @@ if (!isset($_SESSION["login"]) && $_SESSION["login"] != true) {
                     echo "Error";
                 }
                 ?>
-                <script>
-                var off = document.getElementById('off');
-                var link = document.getElementById('link');
-                if (off != 'Not Assign yet!') {
-                    link.style.pointerEvents = 'none';
-                    document.getElementById('status').style.visibility = 'hidden';
-                }
-                </script>
+
 
             </tbody><a href="../Client/caseinfo.php?fno="></a>
         </table>

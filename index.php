@@ -3,6 +3,7 @@
 
 <head>
     <title>JUDICIAL CASE MANAGEMENT SYSTEM</title>
+    <link rel="shortcut icon" href="img/logo.jpg" type="image/x-icon">
 </head>
 
 <body>
@@ -34,13 +35,13 @@
     <!-- Carousel End -->
     <!-- Services Cards Start  -->
     <section>
-        <div class="service">
-            <div class="section-header">
-                <h2>Our Practices Areas</h2>
+        <div class="container mt-3">
+            <div class="text-center">
+
             </div>
         </div>
 
-        <div class="cmain">
+        <!-- <div class="cmain">
             <ul class="cards">
                 <li class="cards_item">
                     <div class="gcard">
@@ -109,8 +110,29 @@
                     </div>
                 </li>
             </ul>
-        </div>
+        </div> -->
     </section>
+
+    <div class="container px-4 text-center">
+        <div class="row gx-5">
+            <div class="col">
+                <div class="p-3">
+                    <h3>JCMS - Judicial Case Management System</h3>
+                    <p align="justify">JCMS Sysytem, which enables electronic filing of cases (E-Cases). Using the JCMS
+                        E-Case System every type of cases can be filed before Hon'ble High Court that adopt this E-Case
+                        system. Introduction of this JCMS E-Case System is aimed at promoting paperless filing and
+                        create time and cost saving efficiencies by adopting technological solution to file cases before
+                        various courts in India.</p>
+                </div>
+            </div>
+            <div class="col">
+                <div class="p-3 mx-3">
+                    <h3>Anything</h3>
+
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Services Cards End  -->
     <?php include 'footer.php'; ?>

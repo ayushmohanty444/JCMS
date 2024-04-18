@@ -12,8 +12,8 @@
 
         background: hsla(0, 0%, 100%, 0.8);
         backdrop-filter: blur(30px);
-        margin-right: 13rem;
-        margin-left: 13rem;
+        margin-right: 10%;
+        margin-left: 10%;
 
     }
 
@@ -29,7 +29,7 @@
 
     .me-md-2 {
         margin-right: .5rem;
-        margin-top: 4rem;
+        margin-top: 2rem;
     }
 </style>
 
@@ -108,7 +108,6 @@
                                     <td>' . $r["case_type"] . ' ' . $case . '</td>
                                     ';
                                     $fno = $r["f_filingno"];
-                                    echo $fno;
                                 }
                                 $sql2 = "SELECT * FROM `casefiling` WHERE `filingno`= '$fno'";
                                 $result = mysqli_query($con, $sql2);
@@ -119,7 +118,9 @@
                                 </tr>';
                                 }
                             } else {
-                                echo "No Data Found";
+                                echo "
+                                <td class='text-center' style='color:red' colspan='4'>No Data Found</td>
+                                ";
                             }
                         } catch (\Throwable $th) {
                             echo "Error to processing data";

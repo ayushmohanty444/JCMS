@@ -36,10 +36,13 @@ try {
             $rpin = $row['rpin'];
             $advno = $row['advno'];
             $advname = $row['advname'];
+            $radvno = $row['r_advno'];
+            $radvname = $row['r_advname'];
             $fact = $row['fact'];
             $act = $row['act'];
             $section = $row['section'];
             $sts = $row['sts'];
+            $judgement = $row['judgement'];
         }
     } else {
         echo "Records not available";
@@ -80,9 +83,12 @@ try {
                         $res = mysqli_query($con, $query);
                         if (mysqli_num_rows($res) > 0) {
                             while ($r = mysqli_fetch_assoc($res)) {
+                                $nocase = $r["case_no"];
+                                $yearcase = $r["year"];
                                 $case = $r["case_no"] . '/' . $r["year"];
                                 $rdate = $r["regd_date"];
                                 $jid = $r["j_regd"];
+                                $courtno = $r['courtno'];
                             }
                         }
                         $query2 = "SELECT * FROM `judge_info` WHERE `j_regd`='$jid' ";
@@ -107,7 +113,7 @@ try {
 
                     <div class="col">
                         <p><strong>Judge:</strong> <span><?php echo $jname; ?></span></p>
-                        <p><strong>Court Number:</strong> <span>C5302</span></p>
+                        <p><strong>Court Number:</strong> <span><?php echo $courtno; ?></span></p>
                     </div>
                 </div>
             </div>
@@ -141,6 +147,7 @@ try {
                 </div>
             </div>
         </div>
+
         <div class="container border border-primary-subtle rounded mb-3">
             <h5 class=""><u>Respondent:</u></h5>
             <div class="mt-3">
@@ -163,8 +170,14 @@ try {
                         <p><strong>PIN:</strong> <span><?php echo $rpin; ?></span></p>
                     </div>
                 </div>
+                <h5><u>Advocate:</u></h5>
+                <div class="mt-3 row">
+                    <p><strong>Advocate Name:</strong> <span><?php echo $radvname; ?></span></p>
+                    <p><strong>Advocate Registration No:</strong> <span><?php echo $radvno; ?></span></p>
+                </div>
             </div>
         </div>
+
         <div class="container border border-primary rounded mb-3">
             <h5 class=""><u>ACTs:</u></h5>
             <div class="mt-3">
@@ -174,6 +187,15 @@ try {
                 </div>
             </div>
         </div>
+        <div class="container border border-primary rounded mb-3">
+            <h5 class=""><u>Fact of the Case:</u></h5>
+            <div class="mt-3">
+                <div class="row">
+                    <p align='justify'><span><?php echo $fact; ?></span></p>
+                </div>
+            </div>
+        </div>
+
         <div class="container border border-primary-subtle rounded mb-3">
             <h5 class=""><u>History of Case:</u></h5>
             <div class="mt-3">
@@ -188,24 +210,22 @@ try {
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>M.K Singh</td>
-                                <td>22.02.2024</td>
-                                <td>Case Admission</td>
+                            <?php
+                            $quet = "SELECT * FROM `case_history` WHERE case_no='$nocase' AND year='$yearcase' ";
+                            $runquet = mysqli_query($con, $quet);
+                            $slno = 1;
+                            while ($row = mysqli_fetch_array($runquet)) {
+                                echo '
+                                <tr>
+                                <th scope="row">' . $slno . '</th>
+                                <td>' . $jname . '</td>
+                                <td>' . $row['next_date'] . '</td>
+                                <td>' . $row['remark'] . '</td>
                             </tr>
-                            <tr>
-                                <th scope="row">2</th>
-                                <td>M.K Singh</td>
-                                <td>25.02.2024</td>
-                                <td>Hearing from Petitioner side</td>
-                            </tr>
-                            <tr>
-                                <th scope="row">3</th>
-                                <td>M.K Singh</td>
-                                <td>01.03.2024</td>
-                                <td> Order</td>
-                            </tr>
+                                ';
+                                $slno = $slno + 1;
+                            }
+                            ?>
                         </tbody>
                     </table>
                 </div>
@@ -215,43 +235,11 @@ try {
             <h5 class=""><u>Orders/Judgements:</u></h5>
             <div class="mt-3">
                 <div class="row">
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">Order on</th>
-                                <th scope="col">Judge</th>
-                                <th scope="col">Order Date</th>
-                                <th scope="col">Order details</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <th scope="row">1</th>
-                                <td>200/2023</td>
-                                <td>M.K Singh</td>
-                                <td>22.02.2024</td>
-                                <td><a href="#">View</a></td>
-                            </tr>
-                            <tr>
-                                <th scope="row">2</th>
-                                <td>200/2023</td>
-                                <td>M.K Singh</td>
-                                <td>25.02.2024</td>
-                                <td><a href="#">View</a></td>
-                            </tr>
-                            <tr>
-                                <th scope="row">3</th>
-                                <td>200/2023</td>
-                                <td>M.K Singh</td>
-                                <td>01.03.2024</td>
-                                <td><a href="#">View</a></td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    <p align='justify'><span><?php echo $judgement; ?></span></p>
                 </div>
             </div>
         </div>
+
         <div class="container mb-3">
             <div class="row">
                 <div class="col-6 text-center">

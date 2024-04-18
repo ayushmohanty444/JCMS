@@ -4,26 +4,6 @@ if (!isset($_SESSION["login"]) && $_SESSION["login"] != true) {
     header("location: s_login.php");
     exit();
 }
-include 'head.php';
-include 's_nav.php';
-include '../dbcon.php';
-
-if (isset($_POST['submit'])) {
-    $case = $_POST['caseno'];
-    $year = $_POST['year'];
-    $date = $_POST['date'];
-    $remark = $_POST['remark'];
-
-    $sql = "INSERT INTO `case_history` (`slno`, `case_no`, `year`, `next_date`, `remark`) VALUES (NULL, '$case', '$year', '$date', '$remark')";
-    $run = mysqli_query($con, $sql);
-    if ($run) {
-        echo '<div class="alert alert-success alert-dismissible align-items-center fade show text-center" role="alert">
-        <strong>Remark Update Successfully!</strong>
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-    </div>';
-    }
-}
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -31,11 +11,12 @@ if (isset($_POST['submit'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CASE INFORMATION UPDATE | JCMS</title>
+    <title>Case Status | JCMS </title>
 </head>
+
 <style>
 .card {
-    margin-top: 40px;
+    margin-top: 50px;
 
     background: hsla(0, 0%, 100%, 0.8);
     backdrop-filter: blur(30px);
@@ -61,19 +42,22 @@ if (isset($_POST['submit'])) {
 </style>
 
 <body>
-
-    <section class="mb-4">
+    <?php
+    include 'head.php';
+    include 's_nav.php';
+    ?>
+    <section>
         <div class="card">
             <div style="background-color:#F4CC4C; text-align: center;">
-                <h3 class="p-2">Case Information Update Form</h3>
+                <h5>Case Status:Search by Case Number</h5>
 
             </div>
             <div class="card-body py-5 px-md-5">
                 <!-- form started -->
-                <form method="POST">
+                <form action="">
                     <div class="row">
                         <label for="colFormLabel" class="col-sm-4 col-form-label">Case Type</label>
-                        <div class="col-sm-5 mb-2">
+                        <div class="col-sm-6 mb-2">
                             <select class="form-select" id="casetype" name="casetype" required>
                                 <option selected>Choose...</option>
                                 <option value="WP(C)">WP(C) - WP(C)-Writ Petition under Art.226 and 227</option>
@@ -93,21 +77,9 @@ if (isset($_POST['submit'])) {
                     </div>
                     <div class="row mb-2">
                         <label for="colFormLabel" class="col-sm-4 col-form-label">Year</label>
-                        <div class="col-sm-5">
+                        <div class="col-sm-3">
                             <input type="number" maxlength="4" class="form-control" id="year" placeholder="YYYY"
                                 name="year">
-                        </div>
-                    </div>
-                    <div class="row mb-2">
-                        <label for="colFormLabel" class="col-sm-4 col-form-label">Next Date</label>
-                        <div class="col-sm-5">
-                            <input type="date" class="form-control" id="date" placeholder="DD-MM-YYYY" name="date">
-                        </div>
-                    </div>
-                    <div class="row mb-2">
-                        <label class="col-sm-4 col-form-label">Remark</label>
-                        <div class="col-sm-5">
-                            <textarea class="form-control" rows="3" placeholder="Status" name="remark"></textarea>
                         </div>
                     </div>
                     <div class="d-grid gap-2 d-md-flex justify-content-md-center">
@@ -119,6 +91,62 @@ if (isset($_POST['submit'])) {
 
                 </form>
             </div>
+
+
+        </div>
+        <div class="card mb-3">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">slno.</th>
+                        <th scope="col">Case Type/Case
+                            Number/Case Year</th>
+                        <th scope="col">Petitioner Name versus Respondent Name</th>
+                        <th scope="col">Link</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                    if (isset($_GET["submit"])) {
+                        $casetype = $_GET["casetype"];
+                        $caseno = $_GET["caseno"];
+                        $caseyear = $_GET["year"];
+                        include '../dbcon.php';
+                        try {
+                            $sql = "SELECT * FROM `case_info` WHERE `case_no`='$caseno' AND `year`= '$caseyear'";
+                            $res = mysqli_query($con, $sql);
+                            if (mysqli_num_rows($res) >  0) {
+                                while ($r = mysqli_fetch_assoc($res)) {
+                                    $case = $r["case_no"] . '/' . $r["year"];
+                                    echo ' <tr>
+                                    <th scope="row">1</th>
+                                    <td>' . $r["case_type"] . ' ' . $case . '</td>
+                                    ';
+                                    $fno = $r["f_filingno"];
+                                }
+                                $sql2 = "SELECT * FROM `casefiling` WHERE `filingno`= '$fno'";
+                                $result = mysqli_query($con, $sql2);
+                                while ($f = mysqli_fetch_array($result)) {
+                                    // echo $f['pname'];
+                                    echo '<td>' . $f["pname"] . ' Vs ' . $f["rname"] . '</td>
+                                    <td><a href="caseinfo.php?fno=' . $fno . '" class="btn btn-warning">View</a></td>
+                                </tr>';
+                                }
+                            } else {
+                                echo "
+                                <td class='text-center' style='color:red' colspan='4'>No Data Found</td>
+                                ";
+                            }
+                        } catch (\Throwable $th) {
+                            echo "Error to processing data";
+                        }
+                    }
+                    ?>
+
+
+                </tbody>
+            </table>
+
         </div>
     </section>
 

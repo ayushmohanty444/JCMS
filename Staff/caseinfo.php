@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (!isset($_SESSION["login"]) && $_SESSION["login"] != true) {
-    header("location: a_login.php");
+    header("location: s_login.php");
     exit();
 }
 $f = $_GET['fno'];
@@ -68,7 +68,7 @@ try {
 
 <body>
     <?php include 'head.php'; ?>
-    <?php include 'a_nav.php'; ?>
+    <?php include 's_nav.php'; ?>
     <section>
         <div class="container text-center">
             <h2><strong>Highcourt of Odisha</strong></h2>
@@ -252,7 +252,7 @@ try {
                     <input type="button" class="btn btn-warning" onclick="window.print()" value="Print">
                 </div>
                 <div class="col-6 text-center">
-                    <a href="cases.php" class="btn btn-secondary">Back</a>
+                    <a href="status.php" class="btn btn-secondary">Back</a>
                 </div>
             </div>
         </div>

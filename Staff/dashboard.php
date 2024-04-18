@@ -48,46 +48,34 @@ if (mysqli_num_rows($result) > 0) {
         </div>
     </div>
     <div class="container boxtbl">
-        <h3 class="text-center">List for date tommorow:</h3>
+        <h3 class="text-center">Case Admission Request:</h3>
         <table class="table table-striped table-hover table-bordered">
             <thead>
                 <tr>
                     <th>Sl No.</th>
-                    <th>Case No</th>
+                    <th>Filing No</th>
                     <th>Parties Name</th>
-                    <th>Date</th>
-                    <th>View</th>
+                    <th>Date of Filing</th>
+                    <th>Link</th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>---</td>
-                    <td>This is for case info redirection for staff</td>
-                    <td>---------</td>
-                    <td>Case link</td>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td>02/2023</td>
-                    <td>XYZ Vs. ABC</td>
-                    <td>2011/04/25</td>
-                    <td>10:30 AM</td>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td>02/2023</td>
-                    <td>XYZ Vs. ABC</td>
-                    <td>2011/04/25</td>
-                    <td>10:30 AM</td>
-                </tr>
-                <tr>
-                    <td>1</td>
-                    <td>02/2023</td>
-                    <td>XYZ Vs. ABC</td>
-                    <td>2011/04/25</td>
-                    <td>10:30 AM</td>
-                </tr>
+                <?php
+                $sql = "SELECT * FROM `casefiling` WHERE `verify` = '0'";
+                $query = mysqli_query($con, $sql);
+                $slno = 1;
+                while ($num = mysqli_fetch_array($query)) {
+                    $parties = $num['pname'] . ' Vs. ' . $num['rname'];
+                    echo '<tr>
+                    <td>' . $slno . '</td>
+                    <td>' . $num['filingno'] . '</td>
+                    <td>' . $parties . '</td>
+                    <td>' . $num['date'] . '</td>
+                    <td><a href="admission.php?fno=' . $num['filingno'] . '" class="btn btn-warning">View</a></td>
+                </tr>';
+                    $slno = $slno + 1;
+                }
+                ?>
 
             </tbody>
         </table>

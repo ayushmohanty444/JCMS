@@ -5,28 +5,24 @@
     <title>ABOUT US | JCMS</title>
 </head>
 <style>
-.paragraph {
-    width: 70%;
-    margin: auto;
-}
+    .paragraph {
+        width: 70%;
+        margin: auto;
+    }
 
-.paragraph h3 {
-    color: saddlebrown;
-    font-weight: 600;
-}
+    .paragraph h3 {
+        color: saddlebrown;
+        font-weight: 600;
+    }
 </style>
 
 <body>
     <?php include 'header.php'; ?>
 
     <section>
-        <div class="service">
-            <div class="section-header">
-                <h2>Our Practices Areas</h2>
-            </div>
-        </div>
 
-        <div class="container">
+
+        <div class="container mt-3">
             <div class="paragraph">
                 <h3>Mission:</h3>
                 <p align="Justify">
